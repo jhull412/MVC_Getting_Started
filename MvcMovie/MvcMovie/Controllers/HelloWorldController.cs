@@ -10,14 +10,20 @@ namespace MvcMovie.Controllers
         //
         // GET: /HelloWorld/
 
-        public string Index()
+        public ActionResult Index()
         {
-            return "This is my <b>default</b> action...";
+            return View();
         }
 
         //
         // GET: /HelloWorld/Welcome/
-
+        // /HelloWorld/Welcome?name=Justin&numtimes=10
+        public ActionResult Welcome(string name, int numTimes = 1)
+        {
+            ViewBag.Message = "Hello " + name;
+            ViewBag.NumTimes = numTimes;
+            return View();
+        }
         //  /HelloWorld/Welcome?name=Scott&numtimes=4
         //public string Welcome()
         //{
@@ -31,9 +37,9 @@ namespace MvcMovie.Controllers
         //}
 
         // /HelloWorld/Welcome/Scott/3
-        public string Welcome(string name, int ID = 1)
-        {
-            return HttpUtility.HtmlEncode("Hello " + name + ", ID: " + ID);
-        }
+        //public string Welcome(string name, int ID = 1)
+        //{
+        //    return HttpUtility.HtmlEncode("Hello " + name + ", ID: " + ID);
+        //}
     }
 }
